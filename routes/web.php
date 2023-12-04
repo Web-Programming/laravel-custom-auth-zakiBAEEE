@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
+use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// metode nya get lalu masukkan namespace AuthController
+// metode nya get lalu masukkan namespace AuthController 
 // attribute name merupakan penamaan dari route yang kita buat
 // kita tinggal panggil fungsi route(name) pada layout atau controller
 Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -43,3 +43,22 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('user', UserController::class);
     });
 });
+
+Route::get('/prodi', [ProdiController::class, 'index']);
+
+Route::get('/prodi/all-join-facade', [ProdiController::class, 'allJoinFacade']);
+Route::get('/prodi/all-join-elq', [ProdiController::class, 'allJoinElq']);
+Route::get('prodi/create', [ProdiController::class, 'create'])->name("prodi.create");
+Route::post('prodi/store', [ProdiController::class, 'store']);
+
+//MENAMPILKAN SEMUA DATA PROGRAM STUDI
+Route::get('prodi', [ProdiController::class, 'index'])->name('prodi.index');
+//Menampilakan satu data program studi
+Route::get('/prodi/{prodi}', [ProdiController::class, 'show'])->name('prodi.show');
+
+Route::get('/prodi/{prodi}/edit', [ProdiController::class, 'edit'])->name('prodi.edit');
+Route::patch('prodi/{prodi}', [ProdiController::class, 'update'])->name('prodi.update');
+Route::delete('/prodi/{prodi}', [ProdiController::class, 'destroy'])->name('prodi.destroy');
+
+
+

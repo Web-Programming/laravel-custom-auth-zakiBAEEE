@@ -20,10 +20,10 @@ class Cek_login
         if (!Auth::check()) {
             return redirect('login');
         }
-        //    simpan data user pada variabel $user
+        // simpan data user pada variabel $user
         $user = Auth::user();
 
-        //    jika user memiliki level sesuai pada kolom pada lanjutkan request
+        // jika user memiliki level sesuai pada kolom pada lanjutkan request
         if ($user->level == $roles) {
             return $next($request);
         }
