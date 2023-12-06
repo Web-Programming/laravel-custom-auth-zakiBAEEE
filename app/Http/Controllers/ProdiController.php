@@ -6,6 +6,7 @@ use App\Models\Prodi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class ProdiController extends Controller
 {
     //
@@ -14,7 +15,6 @@ class ProdiController extends Controller
     //  $kampus = "Universitas Multi Data Palembang";
     //return view('prodi.index')->with('kampus', $kampus);
     //}
-
     public function allJoinFacade()
     {
         $kampus = 'Universitas Multi Data Palembang';
